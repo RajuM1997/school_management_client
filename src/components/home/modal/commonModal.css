@@ -70,4 +70,7 @@
     width: 400px;
     height: 400px;
   }
+  .model_btn button {
+    display: none;
+  }
 }

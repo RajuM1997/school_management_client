@@ -37,7 +37,7 @@ const BannerSlider = () => {
                 zIndex: 1,
               }}
             >
-              <Container maxWidth={"xl"}>
+              <Container>
                 <div className="arrows_main">
                   <div
                     className="left_arrow"

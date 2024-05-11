@@ -1,16 +1,16 @@
 import { Grid } from "@mui/material";
-import NoticeBoard from "../noticeBoard/NoticeBoard";
 import "./welcomeSpeech.css";
 import image1 from "../../../assets/welcome_speech/school_wel.jpg";
+import HomeNoticeBoard from "../noticeBoard/HomeNoticeBoard";
 
 const WelcomeSpeech = () => {
   return (
     <div className="section_padding">
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid item xs={12} lg={4} md={4}>
-          <NoticeBoard />
+        <Grid item xs={12} lg={5} md={5}>
+          <HomeNoticeBoard />
         </Grid>
-        <Grid item xs={12} lg={8} md={8}>
+        <Grid item xs={12} lg={7} md={7}>
           <h2 className="common_title">Welcome to Easy School</h2>
           <img src={image1} alt="" className="welcome_image" />
           <p className="common_para welcome_padding">

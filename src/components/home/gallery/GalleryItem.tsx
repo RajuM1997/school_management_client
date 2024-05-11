@@ -1,31 +1,31 @@
-import { GalleryItemProps } from "../../../types/HomePageProps.type";
-
 const renderImages = (photos: string) => {
   return `url(${photos})`;
 };
 
-const GalleryItem = (props: GalleryItemProps) => {
+const GalleryItem = ({ item, index }: any) => {
+  const festivalURL = import.meta.env.VITE_REACT_APP_PUBLIC_FOLDER_FESTIVAL;
   const bgStyle = {
-    backgroundImage: renderImages(props.photo),
+    backgroundImage: renderImages(item?.photo && festivalURL + item?.photo),
   };
 
   return (
     <div
       className={`galleryItemBody ${
-        props.index === 0
+        index === 0
           ? "bigItem1"
-          : props.index === 1
+          : index === 1
           ? "bigItem2"
-          : props.index === 8
+          : index === 8
           ? "bigItem1"
-          : props.index === 9
+          : index === 9
           ? "bigItem2"
-          : `smallItem${props.index}`
+          : `smallItem${index}`
       }`}
     >
       <div style={bgStyle} className="galleryImg"></div>
       <div className="galleryImageOverlay">
-        <h4>{props.title}</h4>
+        <h4>{item?.title}</h4>
+        <p>{item?.year}</p>
       </div>
     </div>
   );

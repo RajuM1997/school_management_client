@@ -5,6 +5,7 @@ import { ThemeProvider } from "@mui/material";
 import { theme } from "./util/theme.tsx";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
