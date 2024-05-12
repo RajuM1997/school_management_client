@@ -1,8 +1,9 @@
-import { Container, Paper } from "@mui/material";
+import { Box, Container, Grid, Paper } from "@mui/material";
 import FeeChart from "./FeeChart";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "../../../components/loader/Loader";
+import ReactDatePicker from "react-datepicker";
 
 type FeeData = {
   date: any;
@@ -12,12 +13,12 @@ type FeeData = {
 const FeeCollectionMain = () => {
   const [data, setData] = useState<FeeData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [date, setDate] = useState(new Date());
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const newDate = new Date();
-        const queryDate = newDate.toISOString();
+        const queryDate = date.toISOString();
         const response = await axios.get(
           `${
             import.meta.env.VITE_REACT_APP_BASE_URL
@@ -32,7 +33,7 @@ const FeeCollectionMain = () => {
     };
 
     fetchData();
-  }, []);
+  }, [date]);
 
   console.log({ data });
 
@@ -47,11 +48,32 @@ const FeeCollectionMain = () => {
             style={{ marginTop: "120px" }}
           >
             <FeeChart />
-            <div className="today_pay">
-              <h3 className="dashboard_common_title">
-                Today Total Pay: <b>{data?.totalPaid}</b>
-              </h3>
-            </div>
+            <Box sx={{ py: 7 }}>
+              <Grid
+                container
+                rowSpacing={1}
+                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+              >
+                <Grid item xs={12} lg={8} md={8}>
+                  <div className="today_pay">
+                    <h3 className="dashboard_common_title">
+                      Today Total Pay: <b>{data?.totalPaid}</b>
+                    </h3>
+                  </div>
+                </Grid>
+                <Grid item xs={12} lg={4} md={4}>
+                  <label htmlFor="" className="input_label">
+                    Pay Date
+                  </label>
+                  <ReactDatePicker
+                    className="text_field"
+                    selected={date}
+                    onChange={(date: any) => setDate(date)}
+                    required
+                  />
+                </Grid>
+              </Grid>
+            </Box>
           </Paper>
         )}
       </Container>
