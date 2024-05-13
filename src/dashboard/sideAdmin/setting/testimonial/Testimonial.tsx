@@ -14,7 +14,7 @@ import TestimonialPDF from "./TestimonialPDF";
 import useFetch from "../../../../hooks/useFetch";
 import { ColumnType, StudentType } from "../../../../types/AdminProps.type";
 import { useState } from "react";
-import Pay from "./Pay";
+// import Pay from "./Pay";
 
 const columns = [
   { id: "photo", label: "Photo", minWidth: 148 },
@@ -103,7 +103,7 @@ const Testimonial = () => {
               </TableBody>
             </Table>
           </TableContainer>
-          <Pay />
+          {/* <Pay /> */}
         </Paper>
       </Container>
     </div>

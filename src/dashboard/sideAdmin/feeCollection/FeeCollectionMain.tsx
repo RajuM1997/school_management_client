@@ -35,8 +35,6 @@ const FeeCollectionMain = () => {
     fetchData();
   }, [date]);
 
-  console.log({ data });
-
   return (
     <div>
       <Container maxWidth={"xl"}>
@@ -47,7 +45,6 @@ const FeeCollectionMain = () => {
             className="dashboard_container_form"
             style={{ marginTop: "120px" }}
           >
-            <FeeChart />
             <Box sx={{ py: 7 }}>
               <Grid
                 container
@@ -74,6 +71,7 @@ const FeeCollectionMain = () => {
                 </Grid>
               </Grid>
             </Box>
+            <FeeChart />
           </Paper>
         )}
       </Container>

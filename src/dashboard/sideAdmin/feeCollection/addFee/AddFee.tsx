@@ -2,7 +2,7 @@ import { Checkbox, Container, Grid, Paper } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useFetch from "../../../../hooks/useFetch";
-import { ClassType } from "../../../../types/AdminProps.type";
+import { ClassType, StudentType } from "../../../../types/AdminProps.type";
 import FormControl from "@mui/material/FormControl";
 import axios from "axios";
 import { addSuccessfully, toastError } from "../../../../util/message";
@@ -41,14 +41,20 @@ const AddFee = () => {
   const [feeData, setFeeData] = useState([]);
   const [totalPaid, setTotalPaid] = useState(0);
   const location = useLocation();
-  const studentData = location?.state?.studentData;
+  const studentDataId = location?.state?.studentData;
   const [totalDue, setTotalDue] = useState(0);
+  const { data: studentData, reFetch } = useFetch<StudentType | null>(
+    `${import.meta.env.VITE_REACT_APP_BASE_URL}/student/${studentDataId?._id}`
+  );
+
   const { data } = useFetch<ClassType | null>(
     `${import.meta.env.VITE_REACT_APP_BASE_URL}/class/filter-class?className=${
       studentData?.class
     }`
   );
+
   const { user } = useContext(AuthContext);
+
   const [totalWaiverValue, setTotalWaiverValue] = useState(0);
   const currentDate = moment();
   const currentMonthName = currentDate.format("MMMM");
@@ -211,7 +217,7 @@ const AddFee = () => {
         {
           paidInfo: previous,
           totalAmount,
-          due: totalAmount - totalPaid,
+          due: totalDue,
           totalPaid: totalPaid,
           totalWaiver: totalWaiverValue,
           paidDate: new Date().toISOString(),
@@ -239,8 +245,10 @@ const AddFee = () => {
         if (res.status === 200) {
           if (user?.role === "admin") {
             addSuccessfully("Added Successfully");
+            reFetch();
           } else {
             addSuccessfully("Added Successfully");
+            reFetch();
           }
         }
       } catch (error) {
@@ -276,7 +284,7 @@ const AddFee = () => {
                   return (
                     <div key={item?.name}>
                       <div>
-                        {studentData.admissionType === item.name ? (
+                        {studentData?.admissionType === item.name ? (
                           <div>
                             <Checkbox
                               onChange={(e) =>
@@ -357,7 +365,7 @@ const AddFee = () => {
                   );
                 }
               })}
-              <div className="fee_checkbox">
+              <div className="fee_checkbox" style={{ display: "none" }}>
                 {feeArray.map((item: any) => {
                   if (item.name === "Monthly fee") {
                     return (

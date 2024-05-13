@@ -1,10 +1,28 @@
 import { Box, Container, Grid } from "@mui/material";
 import "./Contact.css";
+import { addSuccessfully, toastError } from "../../util/message";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
+  const form = useRef<any>();
+  const serviceId = import.meta.env.VITE_REACT_APP_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.VITE_REACT_APP_EMAILJS_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_REACT_APP_EMAILJS_PUBLIC_KEY;
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    emailjs.sendForm(serviceId, templateId, form?.current, publicKey).then(
+      () => {
+        addSuccessfully("Email send successfully");
+        e.currentTarget.reset();
+      },
+      (error: any) => {
+        toastError(error.text);
+      }
+    );
   };
+
   return (
     <div className="contact_us ">
       <Container maxWidth="xl" sx={{ pt: 10 }}>
@@ -24,29 +42,44 @@ const Contact = () => {
               ></iframe>
             </Grid>
             <Grid item xs={12} lg={6} md={6}>
-              <form className="contact_us_form" onSubmit={handleSubmit}>
+              <form
+                className="contact_us_form"
+                onSubmit={handleSubmit}
+                ref={form}
+              >
                 <div className="input_container_main">
                   <div className="input_container">
-                    <label htmlFor="">First Name</label>
-                    <input type="text" name="" id="" placeholder="first name" />
-                  </div>
-                  <div className="input_container">
-                    <label htmlFor="">Last Name</label>
-                    <input type="text" name="" id="" placeholder="last name" />
+                    <label htmlFor="">Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      placeholder="name"
+                    />
                   </div>
                 </div>
                 <div className="input_container_main">
                   <div className="input_container">
                     <label htmlFor="">Email</label>
-                    <input type="email" name="" id="" placeholder="Email" />
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      placeholder="Email"
+                    />
                   </div>
                   <div className="input_container">
                     <label htmlFor="">Phone</label>
-                    <input type="phone" name="" id="" placeholder="+889" />
+                    <input
+                      type="phone"
+                      name="phone"
+                      id="phone"
+                      placeholder="+889"
+                    />
                   </div>
                 </div>
                 <div className="input_container_main">
-                  <textarea name="" id="" rows={10}></textarea>
+                  <textarea name="message" id="" rows={10}></textarea>
                 </div>
                 <div className="submit_btn_pages">
                   <button type="submit">Submit</button>

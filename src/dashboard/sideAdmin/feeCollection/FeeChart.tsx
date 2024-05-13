@@ -30,10 +30,10 @@ const FeeChart = () => {
     return <div>Error fetching data</div>;
   }
 
-  const chartSeries = [
+  const chartSeries: any = [
     {
       name: "Total Paid",
-      data: paidData?.map((item: any) => item.paidAmount),
+      data: data?.map((item: any) => item.paidAmount),
     },
   ];
 
@@ -57,7 +57,6 @@ const FeeChart = () => {
       enabled: false,
     },
   };
-  console.log({ data });
 
   const handleClick = () => {
     navigate("/site-admin/pay-fee");

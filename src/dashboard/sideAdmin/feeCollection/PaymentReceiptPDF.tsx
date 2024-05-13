@@ -187,16 +187,28 @@ const PaymentReceiptPDF = ({ data, studentData }: any) => {
                 );
               }
             })}
+            {data?.totalAmount > 0 && (
+              <View style={styles.row}>
+                <Text style={styles.firstColumn}>Total Amount</Text>
+                <Text style={styles.cell}>{data?.totalAmount}</Text>
+              </View>
+            )}
             {data?.due > 0 && (
               <View style={styles.row}>
-                <Text style={styles.firstColumn}>Total Due</Text>
+                <Text style={styles.firstColumn}>Due</Text>
                 <Text style={styles.cell}>{data?.due}</Text>
+              </View>
+            )}
+            {data?.totalPaid > 0 && (
+              <View style={styles.row}>
+                <Text style={styles.firstColumn}>Paid</Text>
+                <Text style={styles.cell}>{data?.totalPaid}</Text>
               </View>
             )}
           </View>
           <View>
             <Text style={styles.para}>Paid Amount [BDT]</Text>
-            <Text style={styles.totalAmount}>={data?.totalAmount}=</Text>
+            <Text style={styles.totalAmount}>={data?.totalPaid}=</Text>
           </View>
         </View>
 
