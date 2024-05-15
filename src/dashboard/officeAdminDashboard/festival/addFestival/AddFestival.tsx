@@ -33,9 +33,7 @@ const AddFestival = () => {
             if (uploadRes.status === 201) {
               newData.photo = fileName;
             }
-          } catch (err) {
-            console.log(err);
-          }
+          } catch (_err) {}
         })
       );
       try {

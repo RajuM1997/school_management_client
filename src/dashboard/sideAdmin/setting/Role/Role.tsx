@@ -40,8 +40,7 @@ const Role = () => {
         addSuccessfully("added successfully");
         teacherReFetch();
       }
-    } catch (error) {
-      console.log(error);
+    } catch (_error) {
       toastError("Something is wrong");
     }
   };

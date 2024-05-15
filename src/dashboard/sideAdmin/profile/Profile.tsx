@@ -39,7 +39,6 @@ const Profile = () => {
       address,
       phoneNumber,
     };
-    console.log({ newData });
 
     try {
       const res = await axios.put(

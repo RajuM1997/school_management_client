@@ -168,9 +168,7 @@ const EditStudent = () => {
               newData.photo = fileName;
               handleImage(data?.photo, "student");
             }
-          } catch (err) {
-            console.log(err);
-          }
+          } catch (_err) {}
         })
       );
     }

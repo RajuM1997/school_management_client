@@ -89,8 +89,6 @@ const TeacherMark = () => {
   };
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>, item: any) => {
     setExamType(e.target.value);
-    console.log({ item });
-
     setPreviousExamMark(item);
   };
 

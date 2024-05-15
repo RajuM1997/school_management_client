@@ -120,7 +120,6 @@ const TeacherSetting = () => {
                           firstDefaultTeacher = classTeacher.teacherName;
                         }
                       });
-                    console.log({ firstDefaultTeacher });
 
                     return (
                       <>

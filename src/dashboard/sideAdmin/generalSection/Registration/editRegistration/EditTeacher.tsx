@@ -196,9 +196,7 @@ const EditTeacher = () => {
               newData.photo = fileName;
               handleImage(data?.photo, "employee");
             }
-          } catch (err) {
-            console.log(err);
-          }
+          } catch (_err) {}
         })
       );
     }
@@ -219,8 +217,7 @@ const EditTeacher = () => {
           }, 2000);
         }
       }
-    } catch (error) {
-      console.log(error);
+    } catch (_error) {
       toastError("Something is wrong");
     }
   };

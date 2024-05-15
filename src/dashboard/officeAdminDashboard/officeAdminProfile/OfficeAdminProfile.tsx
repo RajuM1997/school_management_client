@@ -39,7 +39,6 @@ const OfficeAdminProfile = () => {
       address,
       phoneNumber,
     };
-    console.log({ newData });
 
     try {
       const res = await axios.put(
@@ -57,7 +56,6 @@ const OfficeAdminProfile = () => {
       toastError("Something is wrong");
     }
   };
-  console.log({ employeeData });
 
   return (
     <div>

@@ -69,7 +69,6 @@ const StudentClass = () => {
               value,
             })
           );
-          console.log({ feeArray });
 
           return (
             <>
@@ -147,55 +146,6 @@ const StudentClass = () => {
             </>
           );
         })}
-
-        {/* <TableContainer sx={{ maxHeight: "90%" }}>
-          <Table stickyHeader aria-label="sticky table">
-            <TableHead>
-              <TableRow>
-                {columns.map((column: ColumnType) => (
-                  <TableCell
-                    key={column.id}
-                    style={{ minWidth: column.minWidth }}
-                  >
-                    {column.label}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {data?.map((item: any) => (
-                <TableRow hover role="checkbox" tabIndex={-1} key={item._id}>
-                  <TableCell>{item?.year}</TableCell>
-                  <TableCell>{item?.shift}</TableCell>
-                  <TableCell>{item?.class}</TableCell>
-                  <TableCell>{item?.section}</TableCell>
-
-                  <TableCell>
-                    <button
-                      className="view_product_btn"
-                      onClick={() => handleSubjectFee(item._id)}
-                    >
-                      Add Subject and Fee
-                    </button>
-                  </TableCell>
-                  <TableCell>
-                    <Link to={`/site-admin/edit-class/${item?._id}`}>
-                      <button className="view_product_btn">Edit</button>
-                    </Link>
-                  </TableCell>
-                  <TableCell>
-                    <button
-                      className="admin_de_btn"
-                      onClick={() => handleDelete(item?._id)}
-                    >
-                      Delete
-                    </button>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer> */}
       </Paper>
     </Container>
   );

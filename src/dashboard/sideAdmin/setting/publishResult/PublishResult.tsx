@@ -16,6 +16,7 @@ import {
 import useFetch from "../../../../hooks/useFetch";
 import axios from "axios";
 import { useState } from "react";
+import { addSuccessfully, toastError } from "../../../../util/message";
 
 const columns = [
   { id: "allExam", label: "Exam Name", minWidth: 148 },
@@ -65,10 +66,10 @@ const ResultPublish = () => {
     });
 
     try {
-      const results = await Promise.all(promises);
-      console.log("All updates successful", results);
+      await Promise.all(promises);
+      addSuccessfully("Successful Publish");
     } catch (error) {
-      console.error("Error updating student data:", error);
+      toastError("Something is wrong");
     }
   };
 

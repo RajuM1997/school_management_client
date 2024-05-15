@@ -41,9 +41,7 @@ const AddBookList = () => {
             if (uploadRes.status === 201) {
               newData.file = fileName;
             }
-          } catch (err) {
-            console.log(err);
-          }
+          } catch (_err) {}
         })
       );
       try {

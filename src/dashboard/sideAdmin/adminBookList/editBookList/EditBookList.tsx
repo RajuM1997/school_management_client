@@ -64,9 +64,7 @@ const EditBookList = () => {
               newData.file = fileName;
               handleDelete(data?.file || undefined);
             }
-          } catch (err) {
-            console.log(err);
-          }
+          } catch (_err) {}
         })
       );
     }

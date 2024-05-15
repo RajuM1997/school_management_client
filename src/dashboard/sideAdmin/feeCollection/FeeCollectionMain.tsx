@@ -25,8 +25,7 @@ const FeeCollectionMain = () => {
           }/student/payment/single/daily?date=${queryDate}`
         );
         setData(response.data);
-      } catch (err: any) {
-        console.log(err);
+      } catch (_err) {
       } finally {
         setLoading(false);
       }

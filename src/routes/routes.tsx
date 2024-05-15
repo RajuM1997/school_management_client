@@ -72,6 +72,7 @@ import AccountProfile from "../dashboard/accountDashboard/accountProfile/Account
 import DashboardFestival from "../dashboard/officeAdminDashboard/festival/DashboardFestival";
 import AddFestival from "../dashboard/officeAdminDashboard/festival/addFestival/AddFestival";
 import EditFestival from "../dashboard/officeAdminDashboard/festival/editFestival/EditFestival";
+import StudentPrivateRoute from "../privateRoute/StudentPrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -424,7 +425,11 @@ const router = createBrowserRouter([
   /* student dashboard */
   {
     path: "/student-dashboard",
-    element: <StudentLayout />,
+    element: (
+      <StudentPrivateRoute>
+        <StudentLayout />
+      </StudentPrivateRoute>
+    ),
     children: [
       {
         path: "/student-dashboard",

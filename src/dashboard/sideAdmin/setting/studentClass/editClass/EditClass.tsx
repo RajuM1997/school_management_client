@@ -100,7 +100,6 @@ const EditClass = () => {
   const handleBack = () => {
     navigate("/site-admin/student-class");
   };
-  console.log({ data });
 
   return (
     <div>

@@ -26,12 +26,8 @@ const Result = () => {
   const [selectedExamType, setSelectedExamType] = useState("");
   const { user } = useContext(AuthContext);
   const { data } = useFetch<StudentType | null>(
-    `${
-      import.meta.env.VITE_REACT_APP_BASE_URL
-    }/student/result/6637356207090e7c9f704a92`
+    `${import.meta.env.VITE_REACT_APP_BASE_URL}/student/result/${user?._id}`
   );
-
-  console.log({ data });
 
   return (
     <Container maxWidth={"xl"}>

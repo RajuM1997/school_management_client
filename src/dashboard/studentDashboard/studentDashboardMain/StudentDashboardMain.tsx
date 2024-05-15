@@ -2,13 +2,8 @@ import { Box, Container, Grid, Paper } from "@mui/material";
 import image1 from "../../../assets/icon/profile.png";
 import image2 from "../../../assets/icon/admin.png";
 import image3 from "../../../assets/icon/class.png";
-import { useContext } from "react";
-import { AuthContext } from "../../../context/AuthContext";
 
 const StudentDashboardMain = () => {
-  const { user } = useContext(AuthContext);
-  console.log({ user });
-
   return (
     <div>
       <Container maxWidth={"xl"}>
@@ -24,7 +19,7 @@ const StudentDashboardMain = () => {
               borderRadius: 2,
             }}
           >
-            <h3 className="dashboard_common_title">Employee & Student</h3>
+            <h3 className="dashboard_common_title"> Student</h3>
             <Grid
               container
               rowSpacing={1}

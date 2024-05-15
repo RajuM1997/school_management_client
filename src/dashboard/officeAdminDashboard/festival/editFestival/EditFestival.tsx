@@ -65,9 +65,7 @@ const EditFestival = () => {
               newData.photo = fileName;
               handleImage(data?.photo || undefined, "festival");
             }
-          } catch (err) {
-            console.log(err);
-          }
+          } catch (_err) {}
         })
       );
     }

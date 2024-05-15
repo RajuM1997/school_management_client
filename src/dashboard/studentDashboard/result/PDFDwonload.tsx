@@ -97,8 +97,8 @@ const styles = StyleSheet.create({
     borderLeftWidth: 12,
     borderRightWidth: 12,
     borderBottomWidth: 25,
-    borderLeftColor: "transparent",
-    borderRightColor: "transparent",
+    borderLeftColor: "#fff",
+    borderRightColor: "#fff",
     borderBottomColor: "green",
   },
   signerContainer: {
@@ -121,16 +121,6 @@ const MyPDFDocument = ({ data, selectedExamType, user }: any) => {
       ),
     [data, selectedExamType]
   );
-
-  // name
-  // rool no
-  // section
-  // shift
-  // class
-  // 40 < red
-  // 40 > 70
-  // 70 > 99
-  console.log({ data });
 
   return (
     <Document>
@@ -157,12 +147,12 @@ const MyPDFDocument = ({ data, selectedExamType, user }: any) => {
         <View style={styles.studentDetails}>
           <View style={{ flexDirection: "column", paddingTop: 15 }}>
             <Text style={styles.textStyle}>
-              Name of Student: {user.username}
+              Name of Student: {user?.username}
             </Text>
             <Text style={styles.textStyle}>Roll No: {user?.rollNumber}</Text>
             <Text style={styles.textStyle}>Section: {user?.section}</Text>
             <Text style={styles.textStyle}>Shift: {user?.shift}</Text>
-            <Text style={styles.textStyle}>Class: {user?.address}</Text>
+            <Text style={styles.textStyle}>Class: {user?.class}</Text>
           </View>
         </View>
         <View style={styles.tableContainer}>

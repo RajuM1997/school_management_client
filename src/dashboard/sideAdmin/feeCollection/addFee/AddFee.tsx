@@ -263,8 +263,6 @@ const AddFee = () => {
     navigate("/site-admin/fee-collection");
   };
 
-  console.log({ pdfData });
-
   return (
     <div>
       <Container maxWidth="xl">

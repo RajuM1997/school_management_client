@@ -24,8 +24,6 @@ const AdminLogin = () => {
         `${import.meta.env.VITE_REACT_APP_BASE_URL}/login/admin`,
         newData
       );
-      console.log(res);
-
       localStorage.setItem("user", res.data);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       if (res?.data?.role === "admin") {
@@ -34,6 +32,8 @@ const AdminLogin = () => {
         navigate("/teacher-dashboard");
       } else if (res?.data?.role === "office-admin") {
         navigate("/office-admin");
+      } else if (res?.data?.role === "account-admin") {
+        navigate("/account-admin");
       }
     } catch (error: any) {
       toastError(error?.response?.data);
